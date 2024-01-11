@@ -3,8 +3,7 @@ st.set_page_config(page_title="BMI")
 
 
 hola = "hola"
-st.title("Title")
-st.header("Header")
+
 st.subheader("Subheader")
 st.text("Text")
 st.image("BMI to avg sleep.png", caption="BMI to Average Sleep")
