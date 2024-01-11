@@ -1,11 +1,7 @@
 import streamlit as st
 st.set_page_config(page_title="BMI")
 
-st.text("Text")
-st.text("Text")
-st.text("Text")
-st.text("Text")
-st.text("Text")
+hola = "hola"
 
 st.title("Title")
 st.header("Header")
