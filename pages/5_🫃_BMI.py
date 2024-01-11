@@ -57,6 +57,9 @@ st.text("Text")
 st.altair_chart(chart_2, use_container_width=True)
 
 with st.expander("Video sobre obesidad"):
+
+
+    
     st.video("https://www.youtube.com/watch?v=llJsK0pjM2s")
 c1, c2, c3, c4, c5 = st.columns(5)
 c1.button("Mi botón")
