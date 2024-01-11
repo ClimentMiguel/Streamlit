@@ -2,8 +2,6 @@ import streamlit as st
 st.set_page_config(page_title="BMI")
 
 
-hola = "hola"
-
 st.subheader("Subheader")
 st.text("Text")
 st.image("BMI to avg sleep.png", caption="BMI to Average Sleep")
