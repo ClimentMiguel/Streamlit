@@ -2,6 +2,7 @@ import streamlit as st
 st.set_page_config(page_title="BMI")
 
 
+Hello = "hello"
 st.title("Title")
 st.header("Header")
 st.subheader("Subheader")
