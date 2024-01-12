@@ -20,15 +20,12 @@ st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión e
 # Calcular la media de duración del sueño por profesión
 # Calcular la media de duración del sueño por profesión
 
-
-
-
 # Suponiendo que ya tienes media_duracion calculado
 media_duracion = df.groupby('Occupation')['Sleep Duration'].mean().reset_index()
 
 # Gráfico de dispersión para calidad del sueño
 fig = px.scatter(df, x='Occupation', y='Quality of Sleep', size='Quality of Sleep',
-                 title='Calidad del Sueño por Profesión',
+                 title='Calidad del sueño por profesión',
                  labels={'Quality of Sleep': 'Calidad del Sueño', 'Occupation': 'Profesión'},
                  size_max=30)
 
@@ -40,7 +37,7 @@ fig.add_trace(go.Scatter(x=media_duracion['Occupation'], y=media_duracion['Sleep
 # Mostrar el gráfico
 st.plotly_chart(fig)
 ####################################################################################################################
-
+#El tamaño de los círculos indica una calidad del sueño mayor
 
 
 
@@ -76,7 +73,7 @@ colors_pie = {'None': 'grey', 'Sleep Apnea': 'Green', 'Insomnia': 'Light green'}
 
 # Crear un gráfico de tarta con Plotly Express y colores personalizados
 fig = px.pie(conteo_sleep_disorder, values=conteo_sleep_disorder.values, names=conteo_sleep_disorder.index,
-             title=f'Proporción de Sleep Disorder para {opcion_seleccionada}')
+             title=f'Proporción de trastornos del sueño para {opcion_seleccionada}')
 
 # Cambiar colores usando el parámetro template
 fig.update_traces(marker=dict(colors=[colors_pie[disorder] for disorder in conteo_sleep_disorder.index]))
@@ -99,30 +96,46 @@ st.plotly_chart(fig)
 st.markdown('---')
 #GRÁFICA 3: TRASTORNO DEL SUEÑO POR PROFESIÓN
 
+import pandas as pd
+import plotly.express as px
+import streamlit as st
 
+# Definir colores personalizados
+colors = {'None': 'grey', 'Sleep Apnea': 'green', 'Insomnia': 'lightgreen'}
 
-colors = {'None': 'grey', 'Sleep Apnea': 'Green', 'Insomnia': 'Light green'}
-
+# Calcular la tabla de contingencia (crosstab) con las frecuencias
 conteo_profesiones = pd.crosstab(index=df['Occupation'], columns=df['Sleep Disorder'])
 
 # Reorganizar las columnas para poner 'None' al final
 conteo_profesiones = conteo_profesiones[['Sleep Apnea', 'Insomnia', 'None']]
 
+# Calcular el total por profesión
+total_por_profesion = conteo_profesiones.sum(axis=1)
+
+# Calcular los porcentajes
+porcentajes_profesiones = conteo_profesiones.divide(total_por_profesion, axis=0) * 100
+
 # Crear el gráfico de barras apiladas con colores personalizados
-fig = px.bar(conteo_profesiones, x=conteo_profesiones.index,
-             y=conteo_profesiones.columns,
-             labels={'y': 'Número de personas'},
-             title='Número de personas con cada tipo de trastorno del sueño por profesión',
-             category_orders={'x': conteo_profesiones.index[::-1]},
-             height=600,
-             color_discrete_map=colors,
-             )
+fig = px.bar(
+    porcentajes_profesiones,
+    x=porcentajes_profesiones.index,
+    y=porcentajes_profesiones.columns,
+    labels={'y': 'Porcentaje de personas'},
+    title='Porcentaje de personas con cada tipo de trastorno del sueño por profesión',
+    category_orders={'x': porcentajes_profesiones.index[::-1]},
+    height=600,
+    color_discrete_map=colors,
+)
 
 # Ajustar la leyenda
 fig.update_layout(legend=dict(title='Sleep Disorder'))
 
 # Mostrar el gráfico
 st.plotly_chart(fig)
+
+
+
+
 
 
 
