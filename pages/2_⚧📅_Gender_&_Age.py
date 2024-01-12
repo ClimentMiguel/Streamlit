@@ -298,65 +298,24 @@ if estado_del_checkbox_masculino:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################################
 st.markdown('---')
 #TÍTULO: ¿INFLUYE LA EDAD DUR Y CAL?
 st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye la edad en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
-#GRÁFICA 4: EDAD Y CALIDAD 
-st.markdown("<p style='font-size: 20px;'>Calidad del sueño según la edad</p>", unsafe_allow_html=True)
-
-media_calidad_sueno_por_edad = df.groupby('Age')['Quality of Sleep'].mean().reset_index()
-
-# Crear el gráfico de líneas
-fig = px.line(
-    media_calidad_sueno_por_edad, x='Age', y='Quality of Sleep',
-    title='Media de calidad del sueño según la edad',
-    labels={'x': 'Edad', 'y': 'Media de Calidad del Sueño'}
-)
-
-# Mostrar el gráfico
-st.plotly_chart(fig)
-#######################################################################################################
-
-
-
-
-
-st.markdown('---')
-#######################################################################################################
-#GRÁFICA 5: EDAD Y DURACIÓN
-# Calcular la media de la duración del sueño por edad
-st.markdown("<p style='font-size: 20px;'>Duración del sueño según la edad</p>", unsafe_allow_html=True)
-media_duracion_sueno_por_edad = df.groupby('Age')['Sleep Duration'].mean().reset_index()
-
-# Crear el gráfico de líneas
-fig = px.line(
-    media_duracion_sueno_por_edad, x='Age', y='Sleep Duration',
-    title='Media de la duración del sueño según la edad',
-    labels={'x': 'Edad', 'y': 'Media de Duración del Sueño'}
-)
-
-# Mostrar el gráfico
-st.plotly_chart(fig)
-#######################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-st.markdown('---')
 #######################################################################################################
 #GRÁFICA 6: CALIDAD, EDAD Y DURACIÓN
 st.markdown("<p style='font-size: 20px;'>Calidad y duración del sueño según la edad</p>", unsafe_allow_html=True)
