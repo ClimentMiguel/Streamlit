@@ -33,7 +33,7 @@ media_combinada = media_combinada.sort_values(by='Quality of Sleep', ascending=F
 
 # Crear gráfico de barras agrupadas
 fig = px.bar(media_combinada, x='Occupation', y=['Quality of Sleep', 'Sleep Duration'],
-             title='Comparación de la calidad y duración del Sueño por profesión ',
+             title='Comparación de la calidad y duración del sueño por profesión ',
              labels={'value': 'Valor Medio', 'variable': 'Métrica', 'Occupation': 'Profesión'},
              barmode='group')  # barmode='group' agrupa las barras para cada profesión
 
@@ -109,7 +109,7 @@ colors_pie = {'None': 'grey', 'Sleep Apnea': 'Green', 'Insomnia': 'Light green'}
 
 # Crear un gráfico de tarta con Plotly Express y colores personalizados
 fig = px.pie(conteo_sleep_disorder, values=conteo_sleep_disorder.values, names=conteo_sleep_disorder.index,
-             title=f'Proporción de trastornos del sueño para {opcion_seleccionada}')
+             title=f'Porcentaje de trastornos del sueño para {opcion_seleccionada}')
 
 # Cambiar colores usando el parámetro template
 fig.update_traces(marker=dict(colors=[colors_pie[disorder] for disorder in conteo_sleep_disorder.index]))

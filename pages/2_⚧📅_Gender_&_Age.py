@@ -44,7 +44,7 @@ st.plotly_chart(fig)
 st.markdown('---')
 #GRÁFICA 1: CALIDAD DEL SUEÑO POR GÉNERO -> Género no influye en la calidad del sueño
 #Título de este apartado
-st.markdown("<p style='font-size: 20px;'>Calidad del sueño según género</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size: 20px;'>Calidad del sueño</p>", unsafe_allow_html=True)
 
 
 
