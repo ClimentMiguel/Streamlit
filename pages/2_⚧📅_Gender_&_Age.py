@@ -14,7 +14,7 @@ df = pd.read_csv(r'sleep.csv')
 
 
 #TÍTULO: ¿Cómo influye el género en la calidad y duración del sueño?
-st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye el género en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye el género en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
 
 
@@ -47,9 +47,12 @@ st.markdown('---')
 st.markdown("<p style='font-size: 20px;'>Calidad del sueño según género</p>", unsafe_allow_html=True)
 
 
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+
+# Assuming you have a DataFrame named df
 
 # Función para generar la gráfica de barras de la calidad del sueño por género
 def generar_grafica(df, genero):
@@ -69,13 +72,12 @@ def generar_grafica(df, genero):
 
     return fig
 
-# Estado de los checkboxes
-estado_del_checkbox_femenino = st.checkbox("Femenino", value=False)
-estado_del_checkbox_masculino = st.checkbox("Masculino", value=False)
-estado_del_checkbox_comparacion = st.checkbox("Comparación entre ambos géneros", value=False)
+# Opciones de botones de radio
+opciones_genero = ['Femenino', 'Masculino', 'Comparación entre ambos géneros']
+opcion_seleccionada = st.radio("Seleccione una opción", opciones_genero)
 
-# Verificar si los checkboxes están marcados y mostrar las gráficas correspondientes
-if estado_del_checkbox_comparacion:
+# Verificar la opción seleccionada y mostrar las gráficas correspondientes
+if opcion_seleccionada == 'Comparación entre ambos géneros':
     # Generar la gráfica de barras comparativa entre ambos géneros
     df_mujeres = df[df['Gender'] == 'Female']
     df_hombres = df[df['Gender'] == 'Male']
@@ -108,18 +110,33 @@ if estado_del_checkbox_comparacion:
     # Mostrar la gráfica de comparación
     st.plotly_chart(fig_comparacion)
 
-# Verificar si los checkboxes individuales están marcados y mostrar las gráficas correspondientes
-if estado_del_checkbox_femenino:
-    fig_femenino = generar_grafica(df, 'Female')
-    # Mostrar la gráfica de mujeres
-    st.plotly_chart(fig_femenino)
+else:
+    genero_seleccionado = 'Female' if opcion_seleccionada == 'Femenino' else 'Male'
+    fig_genero = generar_grafica(df, genero_seleccionado)
+    # Mostrar la gráfica del género seleccionado
+    st.plotly_chart(fig_genero)
 
-if estado_del_checkbox_masculino:
-    fig_masculino = generar_grafica(df, 'Male')
-    # Mostrar la gráfica de hombres
-    st.plotly_chart(fig_masculino)
 
 ####################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -140,7 +157,7 @@ if estado_del_checkbox_masculino:
 st.markdown('---')
 #GRÁFICA 2: DURACIÓN DEL SUEÑO POR GÉNERO -> Género no influye en la duración del sueño
 #Título de este apartado
-st.markdown("<p style='font-size: 20px;'>Duración del sueño según género</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size: 20px;'>Duración del sueño</p>", unsafe_allow_html=True)
 
 # Calcular la media de horas que duermen hombres y mujeres
 media_sueno_por_genero = df.groupby('Gender')['Sleep Duration'].mean().reset_index()
@@ -186,13 +203,19 @@ st.plotly_chart(fig)
 
 
 
+
+
+
+
+
+
+
 st.markdown('---')
 ####################################################################################################################
 #GRÁFICA 3:TRASTORNOS DEL SUEÑO POR GÉNERO
 
 #TÍTULO: ¿Influye el género en los trastornos del sueño?
-st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye el género en los trastornos del sueño?</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-size: 20px;'>Trastronos del sueño según género</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye el género en los trastornos del sueño?</p>", unsafe_allow_html=True)
 
 
 
@@ -221,13 +244,12 @@ def generar_grafica(df, genero):
 def make_unique_key(base_key, suffix):
     return f"{base_key} {suffix}"
 
-# Estado de los checkboxes
-estado_del_checkbox_femenino = st.checkbox(make_unique_key("Femenino  ", " "), value=False)
-estado_del_checkbox_masculino = st.checkbox(make_unique_key("Masculino", " "), value=False)
-estado_del_checkbox_comparacion = st.checkbox(make_unique_key("Comparación entre ambos géneros", "  "), value=False)
+# Opciones de botones de radio
+opciones_genero = ['Femenino', 'Masculino', 'Comparación entre ambos géneros']
+opcion_seleccionada = st.radio("Seleccione una opción", opciones_genero, key=make_unique_key("Radio", "Gender"))
 
-# Verificar si los checkboxes están marcados y mostrar las gráficas correspondientes
-if estado_del_checkbox_comparacion:
+# Verificar la opción seleccionada y mostrar las gráficas correspondientes
+if opcion_seleccionada == 'Comparación entre ambos géneros':
     # Generar la gráfica de barras comparativa entre ambos géneros
     df_mujeres = df[df['Gender'] == 'Female']
     df_hombres = df[df['Gender'] == 'Male']
@@ -259,16 +281,16 @@ if estado_del_checkbox_comparacion:
     # Mostrar la gráfica de comparación
     st.plotly_chart(fig_comparacion)
 
-# Verificar si los checkboxes individuales están marcados y mostrar las gráficas correspondientes
-if estado_del_checkbox_femenino:
-    fig_femenino = generar_grafica(df, 'Female')
-    # Mostrar la gráfica de mujeres
-    st.plotly_chart(fig_femenino)
+else:
+    genero_seleccionado = 'Female' if opcion_seleccionada == 'Femenino' else 'Male'
+    fig_genero = generar_grafica(df, genero_seleccionado)
+    # Mostrar la gráfica del género seleccionado
+    st.plotly_chart(fig_genero)
 
-if estado_del_checkbox_masculino:
-    fig_masculino = generar_grafica(df, 'Male')
-    # Mostrar la gráfica de hombres
-    st.plotly_chart(fig_masculino)
+
+   
+
+
 
 
 #CONCLUSIONES INFLUENCIA DEL GÉNERO EN LA CALIDAD, DURACIÓN Y TRASTORNOS:
@@ -314,11 +336,10 @@ if estado_del_checkbox_masculino:
 ###########################################################
 st.markdown('---')
 #TÍTULO: ¿INFLUYE LA EDAD DUR Y CAL?
-st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye la edad en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la edad en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
 #######################################################################################################
 #GRÁFICA 6: CALIDAD, EDAD Y DURACIÓN
-st.markdown("<p style='font-size: 20px;'>Calidad y duración del sueño según la edad</p>", unsafe_allow_html=True)
 media_por_edad = df.groupby('Age').mean().reset_index()
 
 # Crear gráfico de líneas conjunto
@@ -347,7 +368,7 @@ st.plotly_chart(fig)
 st.markdown('---')
 #######################################################################################################
 #GRÁFICA 7: EDAD Y TRASTORNOS DEL SUEÑO
-st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye la edad en los trastornos del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la edad en los trastornos del sueño?</p>", unsafe_allow_html=True)
 # Categorizar las edades en grupos
 
 

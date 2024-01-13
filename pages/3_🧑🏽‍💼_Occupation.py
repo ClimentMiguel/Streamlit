@@ -9,35 +9,59 @@ import plotly.graph_objects as go
 df = pd.read_csv(r'sleep.csv')
 
 # TÍTULO: ¿Influye la profesión en la calidad y duración del sueño?
-st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la profesión en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
 
 
 
 ####################################################################################################################
 #GRÁFICA 1: Profesión y calidad y duración
-# Calcular la media de duración del sueño por profesión
-# Calcular la media de duración del sueño por profesión
-# Calcular la media de duración del sueño por profesión
 
-# Suponiendo que ya tienes media_duracion calculado
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# Suponiendo que ya tienes media_calidad_sueno y media_duracion calculados
+media_calidad_sueno = df.groupby('Occupation')['Quality of Sleep'].mean().reset_index()
 media_duracion = df.groupby('Occupation')['Sleep Duration'].mean().reset_index()
 
-# Gráfico de dispersión para calidad del sueño
-fig = px.scatter(df, x='Occupation', y='Quality of Sleep', size='Quality of Sleep',
-                 title='Calidad del sueño por profesión',
-                 labels={'Quality of Sleep': 'Calidad del Sueño', 'Occupation': 'Profesión'},
-                 size_max=30)
+# Fusionar los DataFrames por profesión
+media_combinada = pd.merge(media_calidad_sueno, media_duracion, on='Occupation', how='inner')
 
-# Añadir puntos para la media de duración del sueño
-fig.add_trace(go.Scatter(x=media_duracion['Occupation'], y=media_duracion['Sleep Duration'],
-                         mode='markers', marker=dict(size=10, symbol='circle', color='red'), 
-                         name='Media de Duración'))
+# Ordenar el DataFrame por la media de calidad del sueño de forma descendente
+media_combinada = media_combinada.sort_values(by='Quality of Sleep', ascending=False)
 
-# Mostrar el gráfico
+# Crear gráfico de barras agrupadas
+fig = px.bar(media_combinada, x='Occupation', y=['Quality of Sleep', 'Sleep Duration'],
+             title='Comparación de la calidad y duración del Sueño por profesión ',
+             labels={'value': 'Valor Medio', 'variable': 'Métrica', 'Occupation': 'Profesión'},
+             barmode='group')  # barmode='group' agrupa las barras para cada profesión
+
+# Establecer el rango del eje y de 0 a 10
+fig.update_yaxes(range=[0, 10])
+
+# Mostrar el gráfico de barras agrupadas
 st.plotly_chart(fig)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ####################################################################################################################
-#El tamaño de los círculos indica una calidad del sueño mayor
 
 
 
@@ -52,7 +76,19 @@ st.plotly_chart(fig)
 
 
 
-st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión en el desarrollo de trastornos del sueño?</p>", unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
+
+
+
+st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la profesión en el desarrollo de trastornos del sueño?</p>", unsafe_allow_html=True)
 ####################################################################################################################
 #GRÁFICA 2: TRASTORNO DEL SUEÑO POR PROFESIÓN
 
@@ -80,6 +116,33 @@ fig.update_traces(marker=dict(colors=[colors_pie[disorder] for disorder in conte
 
 # Mostrar el gráfico de tarta
 st.plotly_chart(fig)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,18 +195,6 @@ fig.update_layout(legend=dict(title='Sleep Disorder'))
 
 # Mostrar el gráfico
 st.plotly_chart(fig)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
