@@ -7,6 +7,7 @@ st.set_page_config(page_title="BMI")
 file = pd.read_csv("DATABASE RAW.csv",delimiter=',',encoding="latin-1")
 file = file.replace(to_replace="Normal Weight", value= "Normal" )
 
+
 Normal =file.loc[file["BMI Category"] == "Normal"]
 avgNormal = round(Normal["Sleep Duration"].mean(), 2)
 avgNormalQ = Normal["Quality of Sleep"].mean()
