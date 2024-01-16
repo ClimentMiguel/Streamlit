@@ -12,6 +12,7 @@ df = pd.read_csv('/Users/Tomasss/uni/23_24Master/Visualizacion_de_datos/Entrega/
 df['Sleep Disorder'] = df['Sleep Disorder'].fillna('None')
 
 # Pregunta
+st.markdown('# :grey[Actividad Física y Pasos Diarios]')
 st.markdown("# ¿Las personas que hacen ejercicio duermen mejor?")
 
 boton1 = st.button('Calidad de Sueño')
