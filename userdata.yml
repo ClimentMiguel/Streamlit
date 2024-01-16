@@ -1,0 +1,20 @@
+cookie:
+  expiry_days: 30
+  key: random_signature_key
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - melsby@gmail.com
+usernames:
+  jsmith:
+    email: jsmith@gmail.com
+    name: jsmith
+    password: $2b$12$6DJzadqTG8F5bS15VNavYOeM7pJDOIChmIwbz2MdCAkZ8gaNhGHmK
+  mike:
+    email: hola@gmail.com
+    name: mike
+    password: $2b$12$m5VwyCpnzpCJhOxVo76/WupO5KLNCRxPWoHEOtnjNwI.Eg25N64CW
+  rbriggs:
+    email: rbriggs@gmail.com
+    name: smith
+    password: $2b$12$u2naqEfR3ZW01aHZADdZUOuqTdQuFI3RdJzpi8semmdX0vqWkjTw6
