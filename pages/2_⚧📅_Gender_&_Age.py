@@ -89,7 +89,7 @@ color_marron_claro = 'burlywood'
 if opcion_seleccionada == 'Comparación entre ambos géneros':
     df_mujeres = df[df['Gender'] == 'Female']
     df_hombres = df[df['Gender'] == 'Male']
-
+    
     conteo_calidad_sueno_mujeres = df_mujeres['Quality of Sleep'].value_counts().reindex(range(11), fill_value=0)
     conteo_calidad_sueno_hombres = df_hombres['Quality of Sleep'].value_counts().reindex(range(11), fill_value=0)
 
@@ -365,8 +365,12 @@ st.markdown("<p style='color: brown; font-size: 24px;'>¿Influye la edad en la c
 
 #######################################################################################################
 #GRÁFICA 6: CALIDAD, EDAD Y DURACIÓN
+bitch= df["Age"].unique().tolist()
 
-media_por_edad = df.groupby('Age').mean().reset_index()
+avgQuality = [df[df["Age"]== el]["Quality of Sleep"].mean() for el in bitch]
+avgDuration = [df[df["Age"]== el]["Sleep Duration"].mean() for el in bitch]
+media_por_edad = pd.DataFrame(list(zip(bitch,avgQuality, avgDuration)),
+      columns=["Age",'Quality of Sleep','Sleep Duration'])
 
 # Crear gráfico de líneas conjunto
 fig = px.line(
