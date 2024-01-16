@@ -289,7 +289,7 @@ if opcion_seleccionada == 'Comparación entre ambos géneros':
         y=[porcentajes_mujeres.values, porcentajes_hombres.values],
         title='Comparación de los trastornos del sueño entre géneros - Porcentaje',
         labels={'x': 'Trastorno del sueño', 'y': 'Porcentaje'},
-        color_discrete_sequence=['lightgrey', 'brown', 'burlywood'],  # Define los colores
+        color_discrete_sequence=['burlywood', 'brown', 'grey'],  # Define los colores
         barmode='group',  # Agrupa las barras del mismo valor de x
     )
 
