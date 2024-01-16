@@ -29,47 +29,38 @@ barchart_2 = pd.melt(barchart_2)
 chart_1 = alt.Chart(barchart_1, title='').mark_bar(clip=True,
     opacity=1,size=70
     ).encode(
-    x =alt.X('variable').title("BMI Category"),
-    y =alt.Y('value:Q').scale(domain=(5.8,7.6)).title("Sleep Duration (hours)"),
+    x =alt.X('variable').title("Categoría de BMI"),
+    y =alt.Y('value:Q').scale(domain=(5.8,7.6)).title("Duración de sueño (hours)"),
     color= alt.Color('variable',legend=None)
-).configure_view(stroke='transparent').properties(title = "Effect of BMI on duration of sleep",height = 500).configure_title(
+).configure_view(stroke='transparent').properties(title = "Efecto del BMI en la duración de sueño",height = 500).configure_title(
     anchor='middle'
 )
 
 chart_2 = alt.Chart(barchart_2, title='').mark_bar(clip=True,
     opacity=1,size=70
     ).encode(
-    x =alt.X('variable').title("BMI Category"),
-    y =alt.Y('value:Q').scale(domain=(5.8,7.6)).title("Sleep Quality"),
+    x =alt.X('variable').title("Categoría de BMI"),
+    y =alt.Y('value:Q').scale(domain=(5.8,7.6)).title("Calidad de sueño"),
     color= alt.Color('variable',legend=None)
-).configure_view(stroke='transparent').properties(title = "Effect of BMI on quality of sleep",height = 500).configure_title(
+).configure_view(stroke='transparent').properties(title = "Efectos del BMI en la calidad de sueño",height = 500).configure_title(
     anchor='middle'
 )
 
-st.title("Effects of BMI on Sleep")
+st.title("Efectos del BMI en el sueño")
 
-st.header("Sleep Duration")
-st.text("Text")
+st.header("Duración del sueño")
 st.altair_chart(chart_1, use_container_width=True)
 
-st.header("Sleep Quality")
-st.text("Text")
+st.header("Calidad del sueño")
 st.altair_chart(chart_2, use_container_width=True)
 
-with st.expander("Video sobre obesidad"):
+
+
+st.header("Trastornos del sueño")
+
+
+with st.expander("Video sobre la relación entre la obesidad y el sueño"):
 
 
     
     st.video("https://www.youtube.com/watch?v=llJsK0pjM2s")
-c1, c2, c3, c4, c5 = st.columns(5)
-c1.button("Mi botón")
-c2.checkbox("Un Checkbox")
-c3.number_input("Input de número", value=5, min_value=0, max_value=10, step=1)
-test = c4.text_input("Input de texto")
-c5.metric("EL bicho", "#7")
-
-
-with st.empty():
-    st.write(test)
-
-

@@ -5,23 +5,20 @@ from yaml.loader import SafeLoader
 
 st.set_page_config(page_title="The Sleep Study", page_icon="=)", layout="centered", initial_sidebar_state="auto", menu_items=None)
 
+if 'name' not in st.session_state:
+    st.session_state['name'] = None
+
 logged = False
 st.session_state["Logged"] = logged
 if st.session_state["name"] == None:
-    st.header("Welcome!")
+    st.header("¡Bienvenid@!")
 else:
-    st.header("Welcome %s!"%(st.session_state["name"]))
+    st.header("¡Bienvenid@ %s!"%(st.session_state["name"]))
 st.session_state["Logged"] = logged
 
 
 authentication_status = None
 #st.session_states
-
-passwords = ['123', '456']
-hashed_passwords = stauth.Hasher(passwords).generate()
-usernames = {'jsmith':{"name": "jsmith", "password":hashed_passwords[0]}, "rbriggs": {'name':"rbriggs","password":hashed_passwords[1]}}
-
-names = {"usernames": usernames, "passwords": passwords}
 
 
 with open('userdata.yml') as file:
@@ -32,14 +29,16 @@ authenticator = stauth.Authenticate(userdata, 'some_cookie_name','some_signature
 
 name, authentication_status, username = authenticator.login('Login', 'main')
 if authentication_status == None:
-    st.warning('Please enter your username and password')
+    st.warning('Por favor, introduzca su nombre de usuario y contraseña')
     logged = False
+    st.session_state["name"] = None
 elif authentication_status:
     authenticator.logout('Logout', 'main')
     logged = True
     st.session_state["Logged"] = logged
+    st.session_state["name"] = name
 elif authentication_status == False:
-    st.error('Username/password is incorrect')
+    st.error('Usuario/contraseña es incorrecto')
 if not(logged):
     namenew = authenticator.register_user('Register',"main",False)
     with open("userdata.yml", "w") as f:
