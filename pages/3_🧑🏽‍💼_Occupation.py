@@ -1,3 +1,8 @@
+
+
+
+
+
 # Importación de librerías
 import streamlit as st
 import plotly.express as px
@@ -9,7 +14,7 @@ import plotly.graph_objects as go
 df = pd.read_csv(r'sleep.csv')
 
 # TÍTULO: ¿Influye la profesión en la calidad y duración del sueño?
-st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la profesión en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
 
 
@@ -35,7 +40,8 @@ media_combinada = media_combinada.sort_values(by='Quality of Sleep', ascending=F
 fig = px.bar(media_combinada, x='Occupation', y=['Quality of Sleep', 'Sleep Duration'],
              title='Comparación de la calidad y duración del sueño por profesión ',
              labels={'value': 'Valor Medio', 'variable': 'Métrica', 'Occupation': 'Profesión'},
-             barmode='group')  # barmode='group' agrupa las barras para cada profesión
+             barmode='group',  # barmode='group' agrupa las barras para cada profesión
+             color_discrete_map={'Quality of Sleep': 'green', 'Sleep Duration': 'lightgreen'})  # Define los colores
 
 # Establecer el rango del eje y de 0 a 10
 fig.update_yaxes(range=[0, 10])
@@ -88,9 +94,13 @@ st.plotly_chart(fig)
 
 
 
-st.markdown("<p style='color: black; font-size: 24px;'>¿Influye la profesión en el desarrollo de trastornos del sueño?</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión en el desarrollo de trastornos del sueño?</p>", unsafe_allow_html=True)
 ####################################################################################################################
 #GRÁFICA 2: TRASTORNO DEL SUEÑO POR PROFESIÓN
+
+import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 # Obtener la lista única de profesiones
 profesiones = df['Occupation'].unique()
@@ -105,7 +115,7 @@ df_profesion = df[df['Occupation'] == opcion_seleccionada]
 conteo_sleep_disorder = df_profesion['Sleep Disorder'].value_counts()
 
 # Definir colores personalizados
-colors_pie = {'None': 'grey', 'Sleep Apnea': 'Green', 'Insomnia': 'Light green'}
+colors_pie = {'None': 'grey', 'Sleep Apnea': 'Green', 'Insomnia': 'lightgreen'}  # Modificado para Insomnia
 
 # Crear un gráfico de tarta con Plotly Express y colores personalizados
 fig = px.pie(conteo_sleep_disorder, values=conteo_sleep_disorder.values, names=conteo_sleep_disorder.index,
