@@ -12,9 +12,10 @@ Sacaremos conclusiones generales respaldadas por la información que obtenemos d
 -En la pagina principal, registra usuario y haz login para poder acceder al contenido de diagnostico de sueño.
 
 ## Big Questions
-¿Cómo afectan diferentes aspectos de nuestras vidas a la calidad de nuestro sueño?
-¿Qué factores afectan de manera positiva al sueño y cuales de manera negativa?
-¿La calidad y cantidad del sueño puede darnos información sobre las personas?
+¿Como influencian las distintas variables en la duración del sueño?
+¿Como influencian distintas variables personales en la calidad del sueño?
+¿Como influencian distintas variables personales en el tipo de enfermedad del sueño?
+¿Como las características del sueño influencian en distintas variables personales?
 
 ##Modulos usados
 -pandas
