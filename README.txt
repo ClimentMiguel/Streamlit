@@ -9,10 +9,7 @@ Sacaremos conclusiones generales respaldadas por la información que obtenemos d
 
 ## Usage
 -Puedes acceder a todas las paginas con contenido estadistico en el sidebar
--En la pagina principal, registra usuario y haz login para poder acceder al contenido de diagnostico de sueño
-
-## Contenido
-Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar las gráficas y elegir con los botones.
+-En la pagina principal, registra usuario y haz login para poder acceder al contenido de diagnostico de sueño.
 
 ## Big Questions
 ¿Cómo afectan diferentes aspectos de nuestras vidas a la calidad de nuestro sueño?
