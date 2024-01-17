@@ -18,5 +18,15 @@ Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar
 ¿Qué factores afectan de manera positiva al sueño y cuales de manera negativa?
 ¿La calidad y cantidad del sueño puede darnos información sobre las personas?
 
+##Modulos requeridos
+-pandas
+-matplotlib
+-streamlit (obviamente)
+-numpy
+-seaborn
+-plotly.express
+-plotly.graph_objects
+-altair
+-yaml
 
 Para desplegar la app, ejecuta: streamlit run 😴_The_Sleep_Study.py
