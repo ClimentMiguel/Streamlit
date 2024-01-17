@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 # Carga de datos
 df = pd.read_csv('DATABASE RAW.csv')
 
-
+df["Sleep Disorder"]  = df["Sleep Disorder"].fillna(value="None")
 
 st.title("Efectos del género y la edad en el sueño")
 
