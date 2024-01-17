@@ -29,4 +29,9 @@ Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar
 -altair
 -yaml
 
+##Iniciar
+Localmente:
 Para desplegar la app, ejecuta: streamlit run 😴_The_Sleep_Study.py
+En la nube:
+https://climentmiguel-streamlit--the-sleep-study-ci35gi.streamlit.app/
+
