@@ -8,7 +8,8 @@ su estilo de vida (profesión, horas de sueño, peso, género, edad, actividad f
 Sacaremos conclusiones generales respaldadas por la información que obtenemos de este dataset.
 
 ## Usage
-Para usarlo correctamente primero registrate en la página principal. Una vez tengas tu usuairo y contraseña puedes acceder al dashboard iniciando sesión.
+-Puedes acceder a todas las paginas con contenido estadistico en el sidebar
+-En la pagina principal, registra usuario y haz login para poder acceder al contenido de diagnostico de sueño
 
 ## Contenido
 Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar las gráficas y elegir con los botones.
