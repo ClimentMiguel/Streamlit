@@ -3,7 +3,7 @@
 
 # ESTUDIO DEL SUEÑO 😴
 Este repositorio contiene una serie de archivos que funcionan para desplegar un dashboard intractivo con Streamlit. 
-Este dashboard muestra gráficas y dataframes interactivos sobre la calidad del sueño en diferentes personas según 
+Este dashboard muestra gráficas y dataframes interactivos sobre el sueño en diferentes personas según 
 su estilo de vida (profesión, horas de sueño, peso, género, edad, actividad física, niveles de estrés y ritmo cardiáco. 
 Sacaremos conclusiones generales respaldadas por la información que obtenemos de este dataset.
 
