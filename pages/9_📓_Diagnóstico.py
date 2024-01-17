@@ -32,3 +32,4 @@ if logged == True:
 
 else:
     st.header("¡Debes estar loggeado para participar en el diagnóstico! >=(")
+    st.image("./The rock.jpeg",width = 500)
