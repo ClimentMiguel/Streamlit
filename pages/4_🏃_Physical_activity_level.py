@@ -12,8 +12,8 @@ df = pd.read_csv('DATABASE RAW.csv')
 df['Sleep Disorder'] = df['Sleep Disorder'].fillna('None')
 
 # Pregunta
-st.markdown('# :grey[Actividad Física y Pasos Diarios]')
-st.markdown("# ¿Las personas que hacen ejercicio duermen mejor?")
+st.title('Efectos de la actividad física en el sueño')
+st.header("¿Las personas que hacen ejercicio duermen mejor?")
 c1,c2,c3 = st.columns(3)
 boton1 = c1.button('Calidad de Sueño', key = 1)
 boton2 = c2.button('Horas de sueño',key = 2)

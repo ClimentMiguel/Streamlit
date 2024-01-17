@@ -11,9 +11,9 @@ if 'name' not in st.session_state:
 logged = False
 st.session_state["Logged"] = logged
 if st.session_state["name"] == None:
-    st.header("¡Bienvenid@!")
+    st.title("¡Bienvenid@!")
 else:
-    st.header("¡Bienvenid@ %s!"%(st.session_state["name"]))
+    st.title("¡Bienvenid@ %s!"%(st.session_state["name"]))
 st.session_state["Logged"] = logged
 
 

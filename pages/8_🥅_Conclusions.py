@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Conclusions")
 
-st.header("Conclusión")
+st.title("Conclusión")
 st.subheader("Qué factores son los más influyente para no padecer ninguna enfermedad relacionada con el sueño?")
 
 
