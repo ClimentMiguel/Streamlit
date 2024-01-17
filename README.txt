@@ -18,7 +18,7 @@ Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar
 ¿Qué factores afectan de manera positiva al sueño y cuales de manera negativa?
 ¿La calidad y cantidad del sueño puede darnos información sobre las personas?
 
-##Modulos requeridos
+##Modulos usados
 -pandas
 -matplotlib
 -streamlit (obviamente)
