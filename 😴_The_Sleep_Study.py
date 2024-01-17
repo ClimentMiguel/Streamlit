@@ -17,6 +17,7 @@ else:
 st.session_state["Logged"] = logged
 
 
+st.image("./The Sleep study main.jpeg")
 authentication_status = None
 #st.session_states
 
