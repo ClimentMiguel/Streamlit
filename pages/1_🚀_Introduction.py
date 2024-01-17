@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 
-st.set_page_config(page_title="Introduction")
+import numpy as np
+
+
+import seaborn as sns
 
 df = pd.read_csv('DATABASE RAW.csv')
 
@@ -43,48 +44,44 @@ def mostrar_descripcion(opcion_seleccionada):
     st.write(datos_descripciones[opcion_seleccionada])
     
     
-def show_questions_for_hypothesis():
-    # Título para el planteamiento
-    st.title("Planteamiento ")
 
-    # Definir preguntas e hipótesis con sus preguntas asociadas
-    preguntas_hipotesis = {
-        "Como influencian las distintas variables en la duración del sueño": [
-            "¿Cómo afecta la ocupación de una persona a la duración de su sueño?",
-            "¿Existe una relación entre la actividad física y la duración del sueño?",
-            "¿El nivel de estrés influye en la duración del sueño?",
-            "¿Hay diferencias significativas en la duración del sueño entre personas con diferentes categorías de IMC?"
-        ],
-        "Como influencian distintas variables personales en la calidad del sueño": [
-            "¿Cómo la ocupación de una persona influye en la calidad de su sueño?",
-            "¿La actividad física regular se relaciona con una mejor calidad del sueño?",
-            "¿El nivel de estrés afecta la percepción subjetiva de la calidad del sueño?"
-        ],
-        "Comno influencian distintas variables personales en el tipo de enfermedad del sueño": [
-            "¿Cómo la ocupación de una persona influye en el tipo de enfermedad del sueño?",
-            "¿La actividad física o el nivel de estrés están asociados con trastornos específicos del sueño?",
-            "¿Hay diferencias en la presencia de trastornos del sueño entre personas con diferentes categorías de IMC?"
-        ],
-        "Como las características del sueño influencian en distintas variables personales": [
-            "¿Cómo la duración del sueño se relaciona con otras características del sueño?",
-            "¿La calidad del sueño afecta la actividad física diaria de una persona?",
-            "¿Personas con ciertos trastornos del sueño tienen diferencias en el nivel de estrés o categoría de IMC?"
-        ]
-    }
 
-    # Crear una lista con las hipótesis
-    hipotesis = list(preguntas_hipotesis.keys())
+# Definir preguntas e hipótesis con sus preguntas asociadas
+preguntas_hipotesis = {
+    "Como influencian las distintas variables en la duración del sueño": [
+        "¿Cómo afecta la ocupación de una persona a la duración de su sueño?",
+        "¿Existe una relación entre la actividad física y la duración del sueño?",
+        "¿El nivel de estrés influye en la duración del sueño?",
+        "¿Hay diferencias significativas en la duración del sueño entre personas con diferentes categorías de IMC?"
+    ],
+    "Como influencian distintas variables personales en la calidad del sueño": [
+        "¿Cómo la ocupación de una persona influye en la calidad de su sueño?",
+        "¿La actividad física regular se relaciona con una mejor calidad del sueño?",
+        "¿El nivel de estrés afecta la percepción subjetiva de la calidad del sueño?"
+    ],
+    "Comno influencian distintas variables personales en el tipo de enfermedad del sueño": [
+        "¿Cómo la ocupación de una persona influye en el tipo de enfermedad del sueño?",
+        "¿La actividad física o el nivel de estrés están asociados con trastornos específicos del sueño?",
+        "¿Hay diferencias en la presencia de trastornos del sueño entre personas con diferentes categorías de IMC?"
+    ],
+    "Como las características del sueño influencian en distintas variables personales": [
+        "¿Cómo la duración del sueño se relaciona con otras características del sueño?",
+        "¿La calidad del sueño afecta la actividad física diaria de una persona?",
+        "¿Personas con ciertos trastornos del sueño tienen diferencias en el nivel de estrés o categoría de IMC?"
+    ]
+}
 
-    # Seleccionar hipótesis usando un widget de Streamlit
-    selected_hypothesis = st.selectbox("Selecciona un Planteamiento:", hipotesis)
-
+def show_questions_for_hypothesis(selected_hypothesis):
     # Mostrar las preguntas asociadas a la hipótesis seleccionada
     if selected_hypothesis in preguntas_hipotesis:
         st.header(f"{selected_hypothesis} ")
         for pregunta in preguntas_hipotesis[selected_hypothesis]:
-            st.info(pregunta)
+            # Use a custom style to change the text color to green
+            st.markdown(f'<p style="color: green;">{pregunta}</p>', unsafe_allow_html=True)
     else:
         st.warning("¡Selecciona una hipótesis para ver las preguntas asociadas!")
+        
+
 
     
 # Function to get gender distribution
@@ -114,12 +111,18 @@ def estadisticas_edad():
     st.write(f"Edad Mínima: {min_edad} años")
     st.write(f"Edad Media: {media_edad:.2f} años")  # Formatear la media con dos decimales
 
-    # Gráfico de distribución de edad
+    # Gráfico de distribución de edad con barras de diferentes colores
     st.title("Distribución de Edad")
     fig, ax = plt.subplots()
-    sns.histplot(df['Age'], bins=20, kde=True, ax=ax)
+    sns.histplot(df['Age'], bins=20, kde=True, color='red', ax=ax)
     st.pyplot(fig)
-
+    
+    
+    
+    
+    
+    
+    
 # Sección 3: Numero de Ocupaciones
 def numero_ocupaciones():
     # Contar las ocupaciones
@@ -135,7 +138,7 @@ def numero_ocupaciones():
     # Gráfico de distribución de ocupaciones
     st.title("Distribución de Ocupaciones")
     fig, ax = plt.subplots()
-    sns.countplot(y=df['Occupation'], ax=ax)
+    sns.countplot(y=df['Occupation'], palette='Set3', ax=ax)  # You can change 'Set3' to any other seaborn color palette
     st.pyplot(fig)
 
 # Sección 4: Matriz de Correlación
@@ -285,7 +288,16 @@ def main():
     # Mostrar descripción basada en la opción seleccionada
     mostrar_descripcion(opcion_seleccionada)
     
-    show_questions_for_hypothesis()
+    # Título para el planteamiento
+    st.title("Planteamiento ")
+    
+    # Crear una lista con las hipótesis
+    hipotesis = list(preguntas_hipotesis.keys())
+
+# Seleccionar hipótesis usando un widget de Streamlit
+    selected_hypothesis = st.selectbox("Selecciona un Planteamiento:", hipotesis)
+    
+    show_questions_for_hypothesis(selected_hypothesis)
     
     # Llamadas a las funciones para cada sección
     distribucion_genero()
@@ -302,3 +314,11 @@ def main():
   
 if __name__ == "__main__":
     main()
+
+ 
+
+
+
+ 
+
+   
