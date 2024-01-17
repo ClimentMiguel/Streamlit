@@ -29,6 +29,10 @@ Verás que a la izquierda hay diferentes pestañas. En cada una puedes desplegar
 -altair
 -yaml
 
+#Base de datos
+
+https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset
+
 ##Iniciar
 Localmente:
 Para desplegar la app, ejecuta: streamlit run 😴_The_Sleep_Study.py
