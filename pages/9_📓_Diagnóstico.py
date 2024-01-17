@@ -28,5 +28,7 @@ if logged == True:
     elif prediction == "None":
         st.header("Lo más posible es que no padezcas de ningún trastorno de sueño =)")
 
+    st.image("./Sleep diagnosis.jpeg")
+
 else:
     st.header("¡Debes estar loggeado para participar en el diagnóstico! >=(")
