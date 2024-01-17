@@ -14,6 +14,8 @@ import plotly.graph_objects as go
 df = pd.read_csv('DATABASE RAW.csv')
 df['Sleep Disorder'] = df["Sleep Disorder"].fillna(value = "None")
 # TÍTULO: ¿Influye la profesión en la calidad y duración del sueño?
+
+st.title("Efectos de la ocupación en el sueño")
 st.markdown("<p style='color: green; font-size: 24px;'>¿Influye la profesión en la calidad y duración del sueño?</p>", unsafe_allow_html=True)
 
 

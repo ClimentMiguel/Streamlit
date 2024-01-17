@@ -10,7 +10,7 @@ data['Sleep Disorder'].fillna('None', inplace=True)
 #categorical_counts = data.select_dtypes(include=['object']).nunique()
 
 #unique_values_categorical = {column: data[column].unique() for column in data.select_dtypes(include=['object']).columns}
-st.header("Niveles de estrés")
+st.title("Efecto del estrés en el sueño")
 st.subheader("Duración del sueño")
 fig =plt.figure(figsize=(12, 8))
 sns.scatterplot(data=data, x="Sleep Duration", y="Quality of Sleep", size="Stress Level", 

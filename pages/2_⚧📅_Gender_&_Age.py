@@ -14,7 +14,7 @@ df = pd.read_csv('DATABASE RAW.csv')
 
 
 
-
+st.title("Efectos del género y la edad en el sueño")
 
 
 #TÍTULO: ¿Cómo influye el género en la calidad y duración del sueño?

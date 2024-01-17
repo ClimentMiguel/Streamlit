@@ -5,7 +5,7 @@ import modelo_predictivo as mp
 logged = st.session_state["Logged"]
 if logged == True:
 
-    st.header("Diagnóstico de sueño")
+    st.title("Diagnóstico de sueño de %s"%(st.session_state["name"]))
     survey = ss.StreamlitSurvey("Survey")
 
     age = st.slider("¿Cual es su edad?", min_value=0, max_value=100, value=50)
